@@ -1,0 +1,81 @@
+{
+  "name": "@narada/mcp",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./mcp-routes": {
+      "development": "./src/mcp-routes.ts",
+      "types": "./dist/mcp-routes.d.ts",
+      "default": "./dist/mcp-routes.js"
+    },
+    "./oauth-pages": {
+      "development": "./src/oauth-pages.ts",
+      "types": "./dist/oauth-pages.d.ts",
+      "default": "./dist/oauth-pages.js"
+    },
+    "./oauth-routes": {
+      "development": "./src/oauth-routes.ts",
+      "types": "./dist/oauth-routes.d.ts",
+      "default": "./dist/oauth-routes.js"
+    },
+    "./operations": {
+      "development": "./src/operations.ts",
+      "types": "./dist/operations.d.ts",
+      "default": "./dist/operations.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@better-auth/mcp": "1.7.7",
+    "@better-auth/oauth-provider": "1.7.7",
+    "@modelcontextprotocol/server": "2.3.1",
+    "@narada/contracts": "workspace:*",
+    "@narada/core": "workspace:*",
+    "hono": "4.13.13",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./mcp-routes": {
+        "types": "./dist/mcp-routes.d.ts",
+        "default": "./dist/mcp-routes.js"
+      },
+      "./oauth-pages": {
+        "types": "./dist/oauth-pages.d.ts",
+        "default": "./dist/oauth-pages.js"
+      },
+      "./oauth-routes": {
+        "types": "./dist/oauth-routes.d.ts",
+        "default": "./dist/oauth-routes.js"
+      },
+      "./operations": {
+        "types": "./dist/operations.d.ts",
+        "default": "./dist/operations.js"
+      }
+    }
+  }
+}

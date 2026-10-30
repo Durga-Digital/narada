@@ -1,0 +1,76 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 70fec52964a0f633421730b394bbba73feb01843..3d4cc6c315207737a99e470b1f5f22a307c99fed 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -122,6 +122,8 @@ interface DynamoStore {
+     incrementOne?(model: string, id: string, req: {
+         increment: Record<string, number>;
+         set?: StoreItem;
++        /** Predicates to recheck atomically against the revision being updated. */
++        where?: CleanedWhere[];
+     }): Promise<StoreItem | null>;
+     /**
+      * Optional schema generator, wired to the Better Auth CLI `generate` command.
+diff --git a/dist/index.js b/dist/index.js
+index ae2d72afd4edf83400b3acdcf02730dcfcdd627b..ca03b9af19c5c3892e39484f694bd3ae73144505 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -76,9 +76,9 @@ function matchOne(item, w) {
+   const expected = Array.isArray(w.value) ? w.value.map(fold) : fold(w.value);
+   switch (w.operator) {
+     case "eq":
+-      return actual === expected;
++      return expected == null ? actual == null : actual === expected;
+     case "ne":
+-      return actual !== expected;
++      return expected == null ? actual != null : actual !== expected;
+     case "lt":
+       return actual < expected;
+     case "lte":
+@@ -673,7 +673,9 @@ function createSingleTableStore(opts) {
+     for (let attempt = 1; attempt <= MAX_WRITE_ATTEMPTS; attempt++) {
+       const existing = await readRaw(model, id);
+       if (!existing) return onMissing();
+-      const { items, result } = build(existing);
++      const built = build(existing);
++      if (!built) return onMissing();
++      const { items, result } = built;
+       try {
+         await sendTransaction(model, items);
+         return result;
+@@ -802,7 +804,7 @@ function createSingleTableStore(opts) {
+       }
+       return clean;
+     },
+-    async incrementOne(model, id, { increment, set }) {
++    async incrementOne(model, id, { increment, set, where = [] }) {
+       const indexedFields = new Set(
+         (indexMap[model] ?? []).flatMap((p) => [...p.pk, ...p.sk ?? []])
+       );
+@@ -811,12 +813,15 @@ function createSingleTableStore(opts) {
+       );
+       const ttlField = ttlFieldFor(model);
+       const touchesTtl = Boolean(ttlField && set && ttlField in set);
+-      if (touchesIndex || touchesTtl) {
++      if (touchesIndex || touchesTtl || where.length) {
+         return guardedWrite(
+           model,
+           id,
+           (existing) => {
+             const clean = stripReserved(existing);
++            // Recheck the predicate against the same revision committed below.
++            // In particular, refresh-token rotation requires revoked IS NULL.
++            if (!matchesResidual(clean, where)) return null;
+             const merged = { ...clean, ...set ?? {} };
+             for (const [field, delta] of Object.entries(increment)) {
+               const current = merged[field];
+@@ -1191,7 +1196,8 @@ var dynamoAdapter = (config = {}) => {
+           if (store.incrementOne) {
+             return await store.incrementOne(m, id, {
+               increment,
+-              set
++              set,
++              where
+             });
+           }
+           const current = await store.getById(m, id);

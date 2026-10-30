@@ -1,0 +1,87 @@
+.narada-message-editor {
+  --re-bg: #ffffff;
+  --re-fg: #253a2b;
+  --re-border: #dfe5dc;
+}
+.narada-email-canvas .tiptap {
+  outline: none;
+  min-height: 440px;
+  color: #1f2937;
+}
+.narada-email-canvas .tiptap p.is-editor-empty:first-child::before,
+.narada-email-canvas .tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.narada-email-canvas .tiptap .node-container {
+  max-width: 100%;
+}
+.narada-email-canvas .tiptap :focus-visible {
+  outline-color: #345d37;
+}
+
+/* Newsletter typography mirrors the article blocks supported by the renderer. */
+.narada-editorial .narada-email-canvas .tiptap {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.narada-editorial .tiptap :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 1.4em 0 0.6em;
+}
+.narada-editorial .tiptap h1 {
+  font-size: 2em;
+}
+.narada-editorial .tiptap h2 {
+  font-size: 1.6em;
+}
+.narada-editorial .tiptap h3 {
+  font-size: 1.3em;
+}
+.narada-editorial .tiptap p {
+  margin: 0 0 1em;
+}
+.narada-editorial .tiptap ul {
+  list-style: disc;
+  padding-left: 1.5em;
+}
+.narada-editorial .tiptap ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+}
+.narada-editorial .tiptap li p {
+  margin: 0;
+}
+.narada-editorial .tiptap blockquote {
+  border-left: 3px solid #345d37;
+  padding-left: 1.2em;
+  margin: 1.2em 0;
+  color: #59665a;
+}
+.narada-editorial .tiptap a {
+  color: #345d37;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.narada-editorial .tiptap pre {
+  background: #f3f5f1;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+.narada-editorial .tiptap code {
+  font-family: monospace;
+  font-size: 0.85em;
+  background: #f3f5f1;
+}
+.narada-editorial .tiptap hr {
+  border-top: 1px solid #dfe5dc;
+  margin: 2em 0;
+}

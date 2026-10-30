@@ -1,0 +1,56 @@
+import type { ApiScope } from "./legacy-scopes.js";
+import type { OperationId } from "./operations.js";
+
+// Frozen v1 key capability ceiling. Do NOT add new operations here when extending
+// the catalog. New operations require a separately versioned key opt-in.
+// Each outer group is required; alternatives within a group are ORed.
+export const legacyKeyAccess = {
+  "emails.send": [["emails:send"]],
+  "emails.get": [["emails:send"]],
+  "contacts.list": [["contacts:read"]],
+  "contacts.get": [["contacts:read", "contacts:write"]],
+  "contacts.create": [["contacts:create", "contacts:write"]],
+  "contacts.properties.patch": [["contacts:write"]],
+  "contacts.topics.unsubscribe": [["contacts:subscriptions"]],
+  "contacts.update": [["contacts:write"]],
+  "properties.list": [["properties:read"]],
+  "properties.get": [["properties:read"]],
+  "properties.create": [["properties:write"]],
+  "properties.update": [["properties:write"]],
+  "topics.list": [["topics:read"]],
+  "topics.get": [["topics:read"]],
+  "topics.create": [["topics:write"]],
+  "topics.update": [["topics:write"]],
+  "segments.list": [["segments:read"]],
+  "segments.get": [["segments:read"]],
+  "segments.create": [["segments:write"]],
+  "segments.update": [["segments:write"]],
+  "broadcasts.list": [["broadcasts:read"]],
+  "broadcasts.get": [["broadcasts:read"]],
+  "broadcasts.create": [["broadcasts:write"]],
+  "broadcasts.update": [["broadcasts:write"]],
+  "templates.list": [["templates:read"]],
+  "templates.get": [["templates:read"]],
+  "templates.create": [["templates:write"]],
+  "templates.update": [["templates:write"]],
+  "contacts.subscribe": [["contacts:subscriptions"]],
+  "contacts.unsubscribe": [["contacts:subscriptions"]],
+  "segments.members.list": [["segments:read"]],
+  "segments.members.add": [["segments:members"]],
+  "segments.members.remove": [["segments:members"]],
+  "segments.import": [["segments:import"]],
+  "broadcasts.recipients.list": [["broadcasts:read"]],
+  "broadcasts.preview": [["broadcasts:read"]],
+  "broadcasts.duplicate": [["broadcasts:write"]],
+  "broadcasts.send": [["broadcasts:send"]],
+  "broadcasts.test": [["broadcasts:send"]],
+  "broadcasts.cancel": [["broadcasts:send"]],
+  "templates.preview": [["templates:read"]],
+  "templates.publish": [["templates:write"]],
+  "templates.archive": [["templates:write"]],
+  "templates.duplicate": [["templates:write"]],
+  "templates.test": [["templates:test"]],
+  "templates.broadcasts.create": [["templates:read"], ["broadcasts:write"]],
+} as const satisfies Partial<
+  Record<OperationId, readonly (readonly ApiScope[])[]>
+>;

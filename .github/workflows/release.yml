@@ -1,0 +1,45 @@
+name: Release Narada
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_production:
+        description: Deploy this main revision to production after staging passes
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: narada-release
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/ci.yml
+  staging:
+    if: vars.NARADA_DEPLOY_ENABLED == 'true'
+    needs: validate
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      stage: staging
+    secrets:
+      DEPLOY_ACCOUNT_ID: ${{ secrets.NARADA_STAGING_ACCOUNT_ID }}
+      DEPLOY_OWNER_EMAIL: ${{ secrets.NARADA_STAGING_OWNER_EMAIL }}
+      DEPLOY_AUTH_FROM: ${{ secrets.NARADA_STAGING_AUTH_FROM }}
+  production:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_production
+    needs: staging
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      stage: production
+    secrets:
+      DEPLOY_ACCOUNT_ID: ${{ secrets.NARADA_PRODUCTION_ACCOUNT_ID }}
+      DEPLOY_OWNER_EMAIL: ${{ secrets.NARADA_PRODUCTION_OWNER_EMAIL }}
+      DEPLOY_AUTH_FROM: ${{ secrets.NARADA_PRODUCTION_AUTH_FROM }}

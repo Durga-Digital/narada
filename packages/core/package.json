@@ -1,0 +1,785 @@
+{
+  "name": "@narada/core",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    "./acceptance-transaction": {
+      "development": "./src/acceptance-transaction.ts",
+      "types": "./dist/acceptance-transaction.d.ts",
+      "default": "./dist/acceptance-transaction.js"
+    },
+    "./activity-records": {
+      "development": "./src/activity-records.ts",
+      "types": "./dist/activity-records.d.ts",
+      "default": "./dist/activity-records.js"
+    },
+    "./activity": {
+      "development": "./src/activity.ts",
+      "types": "./dist/activity.d.ts",
+      "default": "./dist/activity.js"
+    },
+    "./api-permissions": {
+      "development": "./src/api-permissions.ts",
+      "types": "./dist/api-permissions.d.ts",
+      "default": "./dist/api-permissions.js"
+    },
+    "./api-scopes": {
+      "development": "./src/api-scopes.ts",
+      "types": "./dist/api-scopes.d.ts",
+      "default": "./dist/api-scopes.js"
+    },
+    "./application": {
+      "development": "./src/application.ts",
+      "types": "./dist/application.d.ts",
+      "default": "./dist/application.js"
+    },
+    "./audience-model": {
+      "development": "./src/audience-model.ts",
+      "types": "./dist/audience-model.d.ts",
+      "default": "./dist/audience-model.js"
+    },
+    "./auth-base": {
+      "development": "./src/auth-base.ts",
+      "types": "./dist/auth-base.d.ts",
+      "default": "./dist/auth-base.js"
+    },
+    "./auth": {
+      "development": "./src/auth.ts",
+      "types": "./dist/auth.d.ts",
+      "default": "./dist/auth.js"
+    },
+    "./authorization": {
+      "development": "./src/authorization.ts",
+      "types": "./dist/authorization.d.ts",
+      "default": "./dist/authorization.js"
+    },
+    "./broadcast-model": {
+      "development": "./src/broadcast-model.ts",
+      "types": "./dist/broadcast-model.d.ts",
+      "default": "./dist/broadcast-model.js"
+    },
+    "./broadcasts": {
+      "development": "./src/broadcasts.ts",
+      "types": "./dist/broadcasts.d.ts",
+      "default": "./dist/broadcasts.js"
+    },
+    "./campaign-operations": {
+      "development": "./src/campaign-operations.ts",
+      "types": "./dist/campaign-operations.d.ts",
+      "default": "./dist/campaign-operations.js"
+    },
+    "./config": {
+      "development": "./src/config.ts",
+      "types": "./dist/config.d.ts",
+      "default": "./dist/config.js"
+    },
+    "./contacts": {
+      "development": "./src/contacts.ts",
+      "types": "./dist/contacts.d.ts",
+      "default": "./dist/contacts.js"
+    },
+    "./domain-authentication-model": {
+      "development": "./src/domain-authentication-model.ts",
+      "types": "./dist/domain-authentication-model.d.ts",
+      "default": "./dist/domain-authentication-model.js"
+    },
+    "./domain-authentication": {
+      "development": "./src/domain-authentication.ts",
+      "types": "./dist/domain-authentication.d.ts",
+      "default": "./dist/domain-authentication.js"
+    },
+    "./domain-name": {
+      "development": "./src/domain-name.ts",
+      "types": "./dist/domain-name.d.ts",
+      "default": "./dist/domain-name.js"
+    },
+    "./domain-setup": {
+      "development": "./src/domain-setup.ts",
+      "types": "./dist/domain-setup.d.ts",
+      "default": "./dist/domain-setup.js"
+    },
+    "./email-operations": {
+      "development": "./src/email-operations.ts",
+      "types": "./dist/email-operations.d.ts",
+      "default": "./dist/email-operations.js"
+    },
+    "./email-options": {
+      "development": "./src/email-options.ts",
+      "types": "./dist/email-options.d.ts",
+      "default": "./dist/email-options.js"
+    },
+    "./event-outbox": {
+      "development": "./src/event-outbox.ts",
+      "types": "./dist/event-outbox.d.ts",
+      "default": "./dist/event-outbox.js"
+    },
+    "./form-content": {
+      "development": "./src/form-content.ts",
+      "types": "./dist/form-content.d.ts",
+      "default": "./dist/form-content.js"
+    },
+    "./form-model": {
+      "development": "./src/form-model.ts",
+      "types": "./dist/form-model.d.ts",
+      "default": "./dist/form-model.js"
+    },
+    "./forms": {
+      "development": "./src/forms.ts",
+      "types": "./dist/forms.d.ts",
+      "default": "./dist/forms.js"
+    },
+    "./idempotency": {
+      "development": "./src/idempotency.ts",
+      "types": "./dist/idempotency.d.ts",
+      "default": "./dist/idempotency.js"
+    },
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./integration-guide": {
+      "development": "./src/integration-guide.ts",
+      "types": "./dist/integration-guide.d.ts",
+      "default": "./dist/integration-guide.js"
+    },
+    "./issues": {
+      "development": "./src/issues.ts",
+      "types": "./dist/issues.d.ts",
+      "default": "./dist/issues.js"
+    },
+    "./media-content": {
+      "development": "./src/media-content.ts",
+      "types": "./dist/media-content.d.ts",
+      "default": "./dist/media-content.js"
+    },
+    "./media": {
+      "development": "./src/media.ts",
+      "types": "./dist/media.d.ts",
+      "default": "./dist/media.js"
+    },
+    "./message-content": {
+      "development": "./src/message-content.ts",
+      "types": "./dist/message-content.d.ts",
+      "default": "./dist/message-content.js"
+    },
+    "./message-metadata": {
+      "development": "./src/message-metadata.ts",
+      "types": "./dist/message-metadata.d.ts",
+      "default": "./dist/message-metadata.js"
+    },
+    "./message-retention": {
+      "development": "./src/message-retention.ts",
+      "types": "./dist/message-retention.d.ts",
+      "default": "./dist/message-retention.js"
+    },
+    "./metrics": {
+      "development": "./src/metrics.ts",
+      "types": "./dist/metrics.d.ts",
+      "default": "./dist/metrics.js"
+    },
+    "./model": {
+      "development": "./src/model.ts",
+      "types": "./dist/model.d.ts",
+      "default": "./dist/model.js"
+    },
+    "./newsletter-content": {
+      "development": "./src/newsletter-content.ts",
+      "types": "./dist/newsletter-content.d.ts",
+      "default": "./dist/newsletter-content.js"
+    },
+    "./newsletter-model": {
+      "development": "./src/newsletter-model.ts",
+      "types": "./dist/newsletter-model.d.ts",
+      "default": "./dist/newsletter-model.js"
+    },
+    "./newsletter-page": {
+      "development": "./src/newsletter-page.ts",
+      "types": "./dist/newsletter-page.d.ts",
+      "default": "./dist/newsletter-page.js"
+    },
+    "./oauth-auth": {
+      "development": "./src/oauth-auth.ts",
+      "types": "./dist/oauth-auth.d.ts",
+      "default": "./dist/oauth-auth.js"
+    },
+    "./oauth-grants": {
+      "development": "./src/oauth-grants.ts",
+      "types": "./dist/oauth-grants.d.ts",
+      "default": "./dist/oauth-grants.js"
+    },
+    "./operational-operations": {
+      "development": "./src/operational-operations.ts",
+      "types": "./dist/operational-operations.d.ts",
+      "default": "./dist/operational-operations.js"
+    },
+    "./operational-service": {
+      "development": "./src/operational-service.ts",
+      "types": "./dist/operational-service.d.ts",
+      "default": "./dist/operational-service.js"
+    },
+    "./personalization": {
+      "development": "./src/personalization.ts",
+      "types": "./dist/personalization.d.ts",
+      "default": "./dist/personalization.js"
+    },
+    "./product-dto": {
+      "development": "./src/product-dto.ts",
+      "types": "./dist/product-dto.d.ts",
+      "default": "./dist/product-dto.js"
+    },
+    "./product-operations": {
+      "development": "./src/product-operations.ts",
+      "types": "./dist/product-operations.d.ts",
+      "default": "./dist/product-operations.js"
+    },
+    "./product-pagination": {
+      "development": "./src/product-pagination.ts",
+      "types": "./dist/product-pagination.d.ts",
+      "default": "./dist/product-pagination.js"
+    },
+    "./public-dto": {
+      "development": "./src/public-dto.ts",
+      "types": "./dist/public-dto.d.ts",
+      "default": "./dist/public-dto.js"
+    },
+    "./public-pagination": {
+      "development": "./src/public-pagination.ts",
+      "types": "./dist/public-pagination.d.ts",
+      "default": "./dist/public-pagination.js"
+    },
+    "./publication-branding": {
+      "development": "./src/publication-branding.ts",
+      "types": "./dist/publication-branding.d.ts",
+      "default": "./dist/publication-branding.js"
+    },
+    "./publication-content-links": {
+      "development": "./src/publication-content-links.ts",
+      "types": "./dist/publication-content-links.d.ts",
+      "default": "./dist/publication-content-links.js"
+    },
+    "./publication-domain-aws": {
+      "development": "./src/publication-domain-aws.ts",
+      "types": "./dist/publication-domain-aws.d.ts",
+      "default": "./dist/publication-domain-aws.js"
+    },
+    "./publication-domain-dns": {
+      "development": "./src/publication-domain-dns.ts",
+      "types": "./dist/publication-domain-dns.d.ts",
+      "default": "./dist/publication-domain-dns.js"
+    },
+    "./publication-domain-provider": {
+      "development": "./src/publication-domain-provider.ts",
+      "types": "./dist/publication-domain-provider.d.ts",
+      "default": "./dist/publication-domain-provider.js"
+    },
+    "./publication-domains": {
+      "development": "./src/publication-domains.ts",
+      "types": "./dist/publication-domains.d.ts",
+      "default": "./dist/publication-domains.js"
+    },
+    "./publication-editorial": {
+      "development": "./src/publication-editorial.ts",
+      "types": "./dist/publication-editorial.d.ts",
+      "default": "./dist/publication-editorial.js"
+    },
+    "./publication-pages": {
+      "development": "./src/publication-pages.ts",
+      "types": "./dist/publication-pages.d.ts",
+      "default": "./dist/publication-pages.js"
+    },
+    "./publication-site": {
+      "development": "./src/publication-site.ts",
+      "types": "./dist/publication-site.d.ts",
+      "default": "./dist/publication-site.js"
+    },
+    "./publications": {
+      "development": "./src/publications.ts",
+      "types": "./dist/publications.d.ts",
+      "default": "./dist/publications.js"
+    },
+    "./queue": {
+      "development": "./src/queue.ts",
+      "types": "./dist/queue.d.ts",
+      "default": "./dist/queue.js"
+    },
+    "./rate-limit": {
+      "development": "./src/rate-limit.ts",
+      "types": "./dist/rate-limit.d.ts",
+      "default": "./dist/rate-limit.js"
+    },
+    "./recovery-sender": {
+      "development": "./src/recovery-sender.ts",
+      "types": "./dist/recovery-sender.d.ts",
+      "default": "./dist/recovery-sender.js"
+    },
+    "./resource-lifecycle": {
+      "development": "./src/resource-lifecycle.ts",
+      "types": "./dist/resource-lifecycle.d.ts",
+      "default": "./dist/resource-lifecycle.js"
+    },
+    "./runtime": {
+      "development": "./src/runtime.ts",
+      "types": "./dist/runtime.d.ts",
+      "default": "./dist/runtime.js"
+    },
+    "./send-approval-context": {
+      "development": "./src/send-approval-context.ts",
+      "types": "./dist/send-approval-context.d.ts",
+      "default": "./dist/send-approval-context.js"
+    },
+    "./send-approvals": {
+      "development": "./src/send-approvals.ts",
+      "types": "./dist/send-approvals.d.ts",
+      "default": "./dist/send-approvals.js"
+    },
+    "./service": {
+      "development": "./src/service.ts",
+      "types": "./dist/service.d.ts",
+      "default": "./dist/service.js"
+    },
+    "./ses-status": {
+      "development": "./src/ses-status.ts",
+      "types": "./dist/ses-status.d.ts",
+      "default": "./dist/ses-status.js"
+    },
+    "./shared-operations": {
+      "development": "./src/shared-operations.ts",
+      "types": "./dist/shared-operations.d.ts",
+      "default": "./dist/shared-operations.js"
+    },
+    "./store": {
+      "development": "./src/store.ts",
+      "types": "./dist/store.d.ts",
+      "default": "./dist/store.js"
+    },
+    "./submission-timing": {
+      "development": "./src/submission-timing.ts",
+      "types": "./dist/submission-timing.d.ts",
+      "default": "./dist/submission-timing.js"
+    },
+    "./subscription-links": {
+      "development": "./src/subscription-links.ts",
+      "types": "./dist/subscription-links.d.ts",
+      "default": "./dist/subscription-links.js"
+    },
+    "./subscriptions": {
+      "development": "./src/subscriptions.ts",
+      "types": "./dist/subscriptions.d.ts",
+      "default": "./dist/subscriptions.js"
+    },
+    "./template-model": {
+      "development": "./src/template-model.ts",
+      "types": "./dist/template-model.d.ts",
+      "default": "./dist/template-model.js"
+    },
+    "./templates": {
+      "development": "./src/templates.ts",
+      "types": "./dist/templates.d.ts",
+      "default": "./dist/templates.js"
+    },
+    "./transport": {
+      "development": "./src/transport.ts",
+      "types": "./dist/transport.d.ts",
+      "default": "./dist/transport.js"
+    },
+    "./webhook-events": {
+      "development": "./src/webhook-events.ts",
+      "types": "./dist/webhook-events.d.ts",
+      "default": "./dist/webhook-events.js"
+    },
+    "./webhooks": {
+      "development": "./src/webhooks.ts",
+      "types": "./dist/webhooks.d.ts",
+      "default": "./dist/webhooks.js"
+    },
+    "./work-dispatcher": {
+      "development": "./src/work-dispatcher.ts",
+      "types": "./dist/work-dispatcher.d.ts",
+      "default": "./dist/work-dispatcher.js"
+    },
+    "./origins": {
+      "development": "./src/origins.ts",
+      "types": "./dist/origins.d.ts",
+      "default": "./dist/origins.js"
+    },
+    "./auth-database": {
+      "development": "./src/auth-database.ts",
+      "types": "./dist/auth-database.d.ts",
+      "default": "./dist/auth-database.js"
+    },
+    "./auth-service": {
+      "development": "./src/auth-service.ts",
+      "types": "./dist/auth-service.d.ts",
+      "default": "./dist/auth-service.js"
+    },
+    "./oauth-context": {
+      "development": "./src/oauth-context.ts",
+      "types": "./dist/oauth-context.d.ts",
+      "default": "./dist/oauth-context.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node build-auth-adapter.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-acm": "3.1149.0",
+    "@aws-sdk/client-cloudfront": "3.1149.0",
+    "@aws-sdk/client-dynamodb": "3.1149.0",
+    "@aws-sdk/client-s3": "3.1149.0",
+    "@aws-sdk/client-sesv2": "3.1149.0",
+    "@aws-sdk/client-sqs": "3.1149.0",
+    "@aws-sdk/client-sts": "3.1149.0",
+    "@aws-sdk/lib-dynamodb": "3.1149.0",
+    "@better-auth/core": "1.7.7",
+    "@better-auth/mcp": "1.7.7",
+    "@narada/contracts": "workspace:*",
+    "better-auth": "1.7.7",
+    "csv-parse": "7.0.3",
+    "ipaddr.js": "2.2.0",
+    "nodemailer": "10.0.16",
+    "parse5": "8.0.0",
+    "tldts": "7.4.18",
+    "zod": "4.6.5",
+    "@better-auth/oauth-provider": "1.7.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2",
+    "@types/nodemailer": "8.0.2",
+    "@datar-platform/better-auth-dynamodb": "0.2.2"
+  },
+  "publishConfig": {
+    "exports": {
+      "./acceptance-transaction": {
+        "types": "./dist/acceptance-transaction.d.ts",
+        "default": "./dist/acceptance-transaction.js"
+      },
+      "./activity-records": {
+        "types": "./dist/activity-records.d.ts",
+        "default": "./dist/activity-records.js"
+      },
+      "./activity": {
+        "types": "./dist/activity.d.ts",
+        "default": "./dist/activity.js"
+      },
+      "./api-permissions": {
+        "types": "./dist/api-permissions.d.ts",
+        "default": "./dist/api-permissions.js"
+      },
+      "./api-scopes": {
+        "types": "./dist/api-scopes.d.ts",
+        "default": "./dist/api-scopes.js"
+      },
+      "./application": {
+        "types": "./dist/application.d.ts",
+        "default": "./dist/application.js"
+      },
+      "./audience-model": {
+        "types": "./dist/audience-model.d.ts",
+        "default": "./dist/audience-model.js"
+      },
+      "./auth": {
+        "types": "./dist/auth.d.ts",
+        "default": "./dist/auth.js"
+      },
+      "./authorization": {
+        "types": "./dist/authorization.d.ts",
+        "default": "./dist/authorization.js"
+      },
+      "./broadcast-model": {
+        "types": "./dist/broadcast-model.d.ts",
+        "default": "./dist/broadcast-model.js"
+      },
+      "./broadcasts": {
+        "types": "./dist/broadcasts.d.ts",
+        "default": "./dist/broadcasts.js"
+      },
+      "./campaign-operations": {
+        "types": "./dist/campaign-operations.d.ts",
+        "default": "./dist/campaign-operations.js"
+      },
+      "./config": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      },
+      "./contacts": {
+        "types": "./dist/contacts.d.ts",
+        "default": "./dist/contacts.js"
+      },
+      "./domain-authentication-model": {
+        "types": "./dist/domain-authentication-model.d.ts",
+        "default": "./dist/domain-authentication-model.js"
+      },
+      "./domain-authentication": {
+        "types": "./dist/domain-authentication.d.ts",
+        "default": "./dist/domain-authentication.js"
+      },
+      "./domain-name": {
+        "types": "./dist/domain-name.d.ts",
+        "default": "./dist/domain-name.js"
+      },
+      "./domain-setup": {
+        "types": "./dist/domain-setup.d.ts",
+        "default": "./dist/domain-setup.js"
+      },
+      "./email-operations": {
+        "types": "./dist/email-operations.d.ts",
+        "default": "./dist/email-operations.js"
+      },
+      "./email-options": {
+        "types": "./dist/email-options.d.ts",
+        "default": "./dist/email-options.js"
+      },
+      "./event-outbox": {
+        "types": "./dist/event-outbox.d.ts",
+        "default": "./dist/event-outbox.js"
+      },
+      "./form-content": {
+        "types": "./dist/form-content.d.ts",
+        "default": "./dist/form-content.js"
+      },
+      "./form-model": {
+        "types": "./dist/form-model.d.ts",
+        "default": "./dist/form-model.js"
+      },
+      "./forms": {
+        "types": "./dist/forms.d.ts",
+        "default": "./dist/forms.js"
+      },
+      "./idempotency": {
+        "types": "./dist/idempotency.d.ts",
+        "default": "./dist/idempotency.js"
+      },
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./integration-guide": {
+        "types": "./dist/integration-guide.d.ts",
+        "default": "./dist/integration-guide.js"
+      },
+      "./issues": {
+        "types": "./dist/issues.d.ts",
+        "default": "./dist/issues.js"
+      },
+      "./media-content": {
+        "types": "./dist/media-content.d.ts",
+        "default": "./dist/media-content.js"
+      },
+      "./media": {
+        "types": "./dist/media.d.ts",
+        "default": "./dist/media.js"
+      },
+      "./message-content": {
+        "types": "./dist/message-content.d.ts",
+        "default": "./dist/message-content.js"
+      },
+      "./message-metadata": {
+        "types": "./dist/message-metadata.d.ts",
+        "default": "./dist/message-metadata.js"
+      },
+      "./message-retention": {
+        "types": "./dist/message-retention.d.ts",
+        "default": "./dist/message-retention.js"
+      },
+      "./metrics": {
+        "types": "./dist/metrics.d.ts",
+        "default": "./dist/metrics.js"
+      },
+      "./model": {
+        "types": "./dist/model.d.ts",
+        "default": "./dist/model.js"
+      },
+      "./newsletter-content": {
+        "types": "./dist/newsletter-content.d.ts",
+        "default": "./dist/newsletter-content.js"
+      },
+      "./newsletter-model": {
+        "types": "./dist/newsletter-model.d.ts",
+        "default": "./dist/newsletter-model.js"
+      },
+      "./newsletter-page": {
+        "types": "./dist/newsletter-page.d.ts",
+        "default": "./dist/newsletter-page.js"
+      },
+      "./oauth-grants": {
+        "types": "./dist/oauth-grants.d.ts",
+        "default": "./dist/oauth-grants.js"
+      },
+      "./operational-operations": {
+        "types": "./dist/operational-operations.d.ts",
+        "default": "./dist/operational-operations.js"
+      },
+      "./operational-service": {
+        "types": "./dist/operational-service.d.ts",
+        "default": "./dist/operational-service.js"
+      },
+      "./personalization": {
+        "types": "./dist/personalization.d.ts",
+        "default": "./dist/personalization.js"
+      },
+      "./product-dto": {
+        "types": "./dist/product-dto.d.ts",
+        "default": "./dist/product-dto.js"
+      },
+      "./product-operations": {
+        "types": "./dist/product-operations.d.ts",
+        "default": "./dist/product-operations.js"
+      },
+      "./product-pagination": {
+        "types": "./dist/product-pagination.d.ts",
+        "default": "./dist/product-pagination.js"
+      },
+      "./public-dto": {
+        "types": "./dist/public-dto.d.ts",
+        "default": "./dist/public-dto.js"
+      },
+      "./public-pagination": {
+        "types": "./dist/public-pagination.d.ts",
+        "default": "./dist/public-pagination.js"
+      },
+      "./publication-branding": {
+        "types": "./dist/publication-branding.d.ts",
+        "default": "./dist/publication-branding.js"
+      },
+      "./publication-content-links": {
+        "types": "./dist/publication-content-links.d.ts",
+        "default": "./dist/publication-content-links.js"
+      },
+      "./publication-domain-aws": {
+        "types": "./dist/publication-domain-aws.d.ts",
+        "default": "./dist/publication-domain-aws.js"
+      },
+      "./publication-domain-dns": {
+        "types": "./dist/publication-domain-dns.d.ts",
+        "default": "./dist/publication-domain-dns.js"
+      },
+      "./publication-domain-provider": {
+        "types": "./dist/publication-domain-provider.d.ts",
+        "default": "./dist/publication-domain-provider.js"
+      },
+      "./publication-domains": {
+        "types": "./dist/publication-domains.d.ts",
+        "default": "./dist/publication-domains.js"
+      },
+      "./publication-editorial": {
+        "types": "./dist/publication-editorial.d.ts",
+        "default": "./dist/publication-editorial.js"
+      },
+      "./publication-pages": {
+        "types": "./dist/publication-pages.d.ts",
+        "default": "./dist/publication-pages.js"
+      },
+      "./publication-site": {
+        "types": "./dist/publication-site.d.ts",
+        "default": "./dist/publication-site.js"
+      },
+      "./publications": {
+        "types": "./dist/publications.d.ts",
+        "default": "./dist/publications.js"
+      },
+      "./queue": {
+        "types": "./dist/queue.d.ts",
+        "default": "./dist/queue.js"
+      },
+      "./rate-limit": {
+        "types": "./dist/rate-limit.d.ts",
+        "default": "./dist/rate-limit.js"
+      },
+      "./recovery-sender": {
+        "types": "./dist/recovery-sender.d.ts",
+        "default": "./dist/recovery-sender.js"
+      },
+      "./resource-lifecycle": {
+        "types": "./dist/resource-lifecycle.d.ts",
+        "default": "./dist/resource-lifecycle.js"
+      },
+      "./runtime": {
+        "types": "./dist/runtime.d.ts",
+        "default": "./dist/runtime.js"
+      },
+      "./send-approval-context": {
+        "types": "./dist/send-approval-context.d.ts",
+        "default": "./dist/send-approval-context.js"
+      },
+      "./send-approvals": {
+        "types": "./dist/send-approvals.d.ts",
+        "default": "./dist/send-approvals.js"
+      },
+      "./service": {
+        "types": "./dist/service.d.ts",
+        "default": "./dist/service.js"
+      },
+      "./ses-status": {
+        "types": "./dist/ses-status.d.ts",
+        "default": "./dist/ses-status.js"
+      },
+      "./shared-operations": {
+        "types": "./dist/shared-operations.d.ts",
+        "default": "./dist/shared-operations.js"
+      },
+      "./store": {
+        "types": "./dist/store.d.ts",
+        "default": "./dist/store.js"
+      },
+      "./submission-timing": {
+        "types": "./dist/submission-timing.d.ts",
+        "default": "./dist/submission-timing.js"
+      },
+      "./subscription-links": {
+        "types": "./dist/subscription-links.d.ts",
+        "default": "./dist/subscription-links.js"
+      },
+      "./subscriptions": {
+        "types": "./dist/subscriptions.d.ts",
+        "default": "./dist/subscriptions.js"
+      },
+      "./template-model": {
+        "types": "./dist/template-model.d.ts",
+        "default": "./dist/template-model.js"
+      },
+      "./templates": {
+        "types": "./dist/templates.d.ts",
+        "default": "./dist/templates.js"
+      },
+      "./transport": {
+        "types": "./dist/transport.d.ts",
+        "default": "./dist/transport.js"
+      },
+      "./webhook-events": {
+        "types": "./dist/webhook-events.d.ts",
+        "default": "./dist/webhook-events.js"
+      },
+      "./webhooks": {
+        "types": "./dist/webhooks.d.ts",
+        "default": "./dist/webhooks.js"
+      },
+      "./work-dispatcher": {
+        "types": "./dist/work-dispatcher.d.ts",
+        "default": "./dist/work-dispatcher.js"
+      },
+      "./origins": {
+        "types": "./dist/origins.d.ts",
+        "default": "./dist/origins.js"
+      },
+      "./auth-service": {
+        "types": "./dist/auth-service.d.ts",
+        "default": "./dist/auth-service.js"
+      },
+      "./oauth-context": {
+        "types": "./dist/oauth-context.d.ts",
+        "default": "./dist/oauth-context.js"
+      }
+    }
+  }
+}

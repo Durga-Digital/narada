@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./apps/web/src/*", "./apps/web/src/*.ts", "./apps/web/src/*.tsx"]
+    },
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "types": ["node", "vite/client"],
+    "customConditions": ["development"]
+  },
+  "include": ["apps", "packages", "infrastructure", "scripts", "tests", "*.ts"]
+}

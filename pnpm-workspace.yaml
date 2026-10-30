@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+  - packages/*
+  - infrastructure
+allowBuilds:
+  esbuild: true
+patchedDependencies:
+  '@datar-platform/better-auth-dynamodb@0.2.2': patches/@datar-platform__better-auth-dynamodb@0.2.2.patch

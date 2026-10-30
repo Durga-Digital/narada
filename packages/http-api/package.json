@@ -1,0 +1,204 @@
+{
+  "name": "@narada/http-api",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    "./app": {
+      "development": "./src/app.ts",
+      "types": "./dist/app.d.ts",
+      "default": "./dist/app.js"
+    },
+    "./audience-routes": {
+      "development": "./src/audience-routes.ts",
+      "types": "./dist/audience-routes.d.ts",
+      "default": "./dist/audience-routes.js"
+    },
+    "./broadcast-routes": {
+      "development": "./src/broadcast-routes.ts",
+      "types": "./dist/broadcast-routes.d.ts",
+      "default": "./dist/broadcast-routes.js"
+    },
+    "./form-routes": {
+      "development": "./src/form-routes.ts",
+      "types": "./dist/form-routes.d.ts",
+      "default": "./dist/form-routes.js"
+    },
+    "./idempotency": {
+      "development": "./src/idempotency.ts",
+      "types": "./dist/idempotency.d.ts",
+      "default": "./dist/idempotency.js"
+    },
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./media-routes": {
+      "development": "./src/media-routes.ts",
+      "types": "./dist/media-routes.d.ts",
+      "default": "./dist/media-routes.js"
+    },
+    "./newsletter-routes": {
+      "development": "./src/newsletter-routes.ts",
+      "types": "./dist/newsletter-routes.d.ts",
+      "default": "./dist/newsletter-routes.js"
+    },
+    "./preference-routes": {
+      "development": "./src/preference-routes.ts",
+      "types": "./dist/preference-routes.d.ts",
+      "default": "./dist/preference-routes.js"
+    },
+    "./product-routes": {
+      "development": "./src/product-routes.ts",
+      "types": "./dist/product-routes.d.ts",
+      "default": "./dist/product-routes.js"
+    },
+    "./public-dto": {
+      "development": "./src/public-dto.ts",
+      "types": "./dist/public-dto.d.ts",
+      "default": "./dist/public-dto.js"
+    },
+    "./public-pagination": {
+      "development": "./src/public-pagination.ts",
+      "types": "./dist/public-pagination.d.ts",
+      "default": "./dist/public-pagination.js"
+    },
+    "./public-routes": {
+      "development": "./src/public-routes.ts",
+      "types": "./dist/public-routes.d.ts",
+      "default": "./dist/public-routes.js"
+    },
+    "./publication-site": {
+      "development": "./src/publication-site.ts",
+      "types": "./dist/publication-site.d.ts",
+      "default": "./dist/publication-site.js"
+    },
+    "./template-routes": {
+      "development": "./src/template-routes.ts",
+      "types": "./dist/template-routes.d.ts",
+      "default": "./dist/template-routes.js"
+    },
+    "./base": {
+      "development": "./src/base.ts",
+      "types": "./dist/base.d.ts",
+      "default": "./dist/base.js"
+    },
+    "./context": {
+      "development": "./src/context.ts",
+      "types": "./dist/context.d.ts",
+      "default": "./dist/context.js"
+    },
+    "./rest-routes": {
+      "development": "./src/rest-routes.ts",
+      "types": "./dist/rest-routes.d.ts",
+      "default": "./dist/rest-routes.js"
+    },
+    "./owner-routes": {
+      "development": "./src/owner-routes.ts",
+      "types": "./dist/owner-routes.d.ts",
+      "default": "./dist/owner-routes.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@narada/contracts": "workspace:*",
+    "@narada/core": "workspace:*",
+    "hono": "4.13.13",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  },
+  "publishConfig": {
+    "exports": {
+      "./app": {
+        "types": "./dist/app.d.ts",
+        "default": "./dist/app.js"
+      },
+      "./audience-routes": {
+        "types": "./dist/audience-routes.d.ts",
+        "default": "./dist/audience-routes.js"
+      },
+      "./broadcast-routes": {
+        "types": "./dist/broadcast-routes.d.ts",
+        "default": "./dist/broadcast-routes.js"
+      },
+      "./form-routes": {
+        "types": "./dist/form-routes.d.ts",
+        "default": "./dist/form-routes.js"
+      },
+      "./idempotency": {
+        "types": "./dist/idempotency.d.ts",
+        "default": "./dist/idempotency.js"
+      },
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./media-routes": {
+        "types": "./dist/media-routes.d.ts",
+        "default": "./dist/media-routes.js"
+      },
+      "./newsletter-routes": {
+        "types": "./dist/newsletter-routes.d.ts",
+        "default": "./dist/newsletter-routes.js"
+      },
+      "./preference-routes": {
+        "types": "./dist/preference-routes.d.ts",
+        "default": "./dist/preference-routes.js"
+      },
+      "./product-routes": {
+        "types": "./dist/product-routes.d.ts",
+        "default": "./dist/product-routes.js"
+      },
+      "./public-dto": {
+        "types": "./dist/public-dto.d.ts",
+        "default": "./dist/public-dto.js"
+      },
+      "./public-pagination": {
+        "types": "./dist/public-pagination.d.ts",
+        "default": "./dist/public-pagination.js"
+      },
+      "./public-routes": {
+        "types": "./dist/public-routes.d.ts",
+        "default": "./dist/public-routes.js"
+      },
+      "./publication-site": {
+        "types": "./dist/publication-site.d.ts",
+        "default": "./dist/publication-site.js"
+      },
+      "./template-routes": {
+        "types": "./dist/template-routes.d.ts",
+        "default": "./dist/template-routes.js"
+      },
+      "./base": {
+        "types": "./dist/base.d.ts",
+        "default": "./dist/base.js"
+      },
+      "./context": {
+        "types": "./dist/context.d.ts",
+        "default": "./dist/context.js"
+      },
+      "./rest-routes": {
+        "types": "./dist/rest-routes.d.ts",
+        "default": "./dist/rest-routes.js"
+      },
+      "./owner-routes": {
+        "types": "./dist/owner-routes.d.ts",
+        "default": "./dist/owner-routes.js"
+      }
+    }
+  }
+}

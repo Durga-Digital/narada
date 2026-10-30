@@ -1,0 +1,66 @@
+name: Deploy environment
+on:
+  workflow_call:
+    inputs:
+      stage:
+        required: true
+        type: string
+    secrets:
+      DEPLOY_ACCOUNT_ID:
+        required: true
+      DEPLOY_OWNER_EMAIL:
+        required: true
+      DEPLOY_AUTH_FROM:
+        required: true
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: ${{ inputs.stage }}
+    env:
+      NARADA_ACCOUNT_ID: ${{ secrets.DEPLOY_ACCOUNT_ID }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      OWNER_EMAIL: ${{ secrets.DEPLOY_OWNER_EMAIL }}
+      AUTH_FROM: ${{ secrets.DEPLOY_AUTH_FROM }}
+      NARADA_CUSTOM_DOMAIN: ${{ vars.NARADA_CUSTOM_DOMAIN }}
+      NARADA_CERTIFICATE_ARN: ${{ vars.NARADA_CERTIFICATE_ARN }}
+    concurrency:
+      group: narada-deploy-${{ inputs.stage }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+        with:
+          version: 11.9.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate deployment configuration
+        run: >-
+          pnpm exec tsx -e 'import { deploymentConfig } from "./scripts/deployment-config.ts"; deploymentConfig({stage: process.env.STAGE}, process.env)'
+        env:
+          STAGE: ${{ inputs.stage }}
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.DEPLOY_ACCOUNT_ID }}:role/narada-${{ inputs.stage }}-github-deploy
+          role-session-name: narada-${{ github.run_id }}
+          aws-region: ${{ vars.AWS_REGION }}
+          mask-aws-account-id: true
+          role-duration-seconds: 3600
+      - name: Deploy tested revision
+        env:
+          NARADA_STAGE: ${{ inputs.stage }}
+        run: pnpm run deploy --ci
+      - name: Verify deployed frontend and API
+        env:
+          NARADA_STAGE: ${{ inputs.stage }}
+        run: pnpm deploy:smoke --public

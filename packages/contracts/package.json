@@ -1,0 +1,210 @@
+{
+  "name": "@narada/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    "./branding": {
+      "development": "./src/branding.ts",
+      "types": "./dist/branding.d.ts",
+      "default": "./dist/branding.js"
+    },
+    "./delegation": {
+      "development": "./src/delegation.ts",
+      "types": "./dist/delegation.d.ts",
+      "default": "./dist/delegation.js"
+    },
+    "./discovery": {
+      "development": "./src/discovery.ts",
+      "types": "./dist/discovery.d.ts",
+      "default": "./dist/discovery.js"
+    },
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./integration": {
+      "development": "./src/integration.ts",
+      "types": "./dist/integration.d.ts",
+      "default": "./dist/integration.js"
+    },
+    "./issue-state": {
+      "development": "./src/issue-state.ts",
+      "types": "./dist/issue-state.d.ts",
+      "default": "./dist/issue-state.js"
+    },
+    "./legacy-access": {
+      "development": "./src/legacy-access.ts",
+      "types": "./dist/legacy-access.d.ts",
+      "default": "./dist/legacy-access.js"
+    },
+    "./legacy-scopes": {
+      "development": "./src/legacy-scopes.ts",
+      "types": "./dist/legacy-scopes.d.ts",
+      "default": "./dist/legacy-scopes.js"
+    },
+    "./mcp": {
+      "development": "./src/mcp.ts",
+      "types": "./dist/mcp.d.ts",
+      "default": "./dist/mcp.js"
+    },
+    "./operation-types": {
+      "development": "./src/operation-types.ts",
+      "types": "./dist/operation-types.d.ts",
+      "default": "./dist/operation-types.js"
+    },
+    "./operations": {
+      "development": "./src/operations.ts",
+      "types": "./dist/operations.d.ts",
+      "default": "./dist/operations.js"
+    },
+    "./owner-security": {
+      "development": "./src/owner-security.ts",
+      "types": "./dist/owner-security.d.ts",
+      "default": "./dist/owner-security.js"
+    },
+    "./publication-domains": {
+      "development": "./src/publication-domains.ts",
+      "types": "./dist/publication-domains.d.ts",
+      "default": "./dist/publication-domains.js"
+    },
+    "./publication-site": {
+      "development": "./src/publication-site.ts",
+      "types": "./dist/publication-site.d.ts",
+      "default": "./dist/publication-site.js"
+    },
+    "./scopes": {
+      "development": "./src/scopes.ts",
+      "types": "./dist/scopes.d.ts",
+      "default": "./dist/scopes.js"
+    },
+    "./types": {
+      "development": "./src/types.ts",
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./form-content": {
+      "development": "./src/form-content.ts",
+      "types": "./dist/form-content.d.ts",
+      "default": "./dist/form-content.js"
+    },
+    "./media-content": {
+      "development": "./src/media-content.ts",
+      "types": "./dist/media-content.d.ts",
+      "default": "./dist/media-content.js"
+    },
+    "./domain-name": {
+      "development": "./src/domain-name.ts",
+      "types": "./dist/domain-name.d.ts",
+      "default": "./dist/domain-name.js"
+    },
+    "./dashboard": {
+      "development": "./src/dashboard.ts",
+      "types": "./dist/dashboard.d.ts",
+      "default": "./dist/dashboard.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  },
+  "publishConfig": {
+    "exports": {
+      "./branding": {
+        "types": "./dist/branding.d.ts",
+        "default": "./dist/branding.js"
+      },
+      "./delegation": {
+        "types": "./dist/delegation.d.ts",
+        "default": "./dist/delegation.js"
+      },
+      "./discovery": {
+        "types": "./dist/discovery.d.ts",
+        "default": "./dist/discovery.js"
+      },
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./integration": {
+        "types": "./dist/integration.d.ts",
+        "default": "./dist/integration.js"
+      },
+      "./issue-state": {
+        "types": "./dist/issue-state.d.ts",
+        "default": "./dist/issue-state.js"
+      },
+      "./legacy-access": {
+        "types": "./dist/legacy-access.d.ts",
+        "default": "./dist/legacy-access.js"
+      },
+      "./legacy-scopes": {
+        "types": "./dist/legacy-scopes.d.ts",
+        "default": "./dist/legacy-scopes.js"
+      },
+      "./mcp": {
+        "types": "./dist/mcp.d.ts",
+        "default": "./dist/mcp.js"
+      },
+      "./operation-types": {
+        "types": "./dist/operation-types.d.ts",
+        "default": "./dist/operation-types.js"
+      },
+      "./operations": {
+        "types": "./dist/operations.d.ts",
+        "default": "./dist/operations.js"
+      },
+      "./owner-security": {
+        "types": "./dist/owner-security.d.ts",
+        "default": "./dist/owner-security.js"
+      },
+      "./publication-domains": {
+        "types": "./dist/publication-domains.d.ts",
+        "default": "./dist/publication-domains.js"
+      },
+      "./publication-site": {
+        "types": "./dist/publication-site.d.ts",
+        "default": "./dist/publication-site.js"
+      },
+      "./scopes": {
+        "types": "./dist/scopes.d.ts",
+        "default": "./dist/scopes.js"
+      },
+      "./types": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "./form-content": {
+        "types": "./dist/form-content.d.ts",
+        "default": "./dist/form-content.js"
+      },
+      "./media-content": {
+        "types": "./dist/media-content.d.ts",
+        "default": "./dist/media-content.js"
+      },
+      "./domain-name": {
+        "types": "./dist/domain-name.d.ts",
+        "default": "./dist/domain-name.js"
+      },
+      "./dashboard": {
+        "types": "./dist/dashboard.d.ts",
+        "default": "./dist/dashboard.js"
+      }
+    }
+  }
+}

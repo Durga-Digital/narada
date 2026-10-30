@@ -1,0 +1,49 @@
+{
+  "name": "@narada/runtime-aws",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    "./aws-runtime": {
+      "development": "./src/aws-runtime.ts",
+      "types": "./dist/aws-runtime.d.ts",
+      "default": "./dist/aws-runtime.js"
+    },
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ssm": "3.1149.0",
+    "@narada/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  },
+  "publishConfig": {
+    "exports": {
+      "./aws-runtime": {
+        "types": "./dist/aws-runtime.d.ts",
+        "default": "./dist/aws-runtime.js"
+      },
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  }
+}

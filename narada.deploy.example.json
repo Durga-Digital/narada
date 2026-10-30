@@ -1,0 +1,16 @@
+{
+  "staging": {
+    "account": "111111111111",
+    "profile": "narada-staging",
+    "region": "us-east-1",
+    "ownerEmail": "owner@example.com",
+    "authFrom": "Narada <auth@example.com>"
+  },
+  "production": {
+    "account": "222222222222",
+    "profile": "narada-production",
+    "region": "us-east-1",
+    "ownerEmail": "owner@example.com",
+    "authFrom": "Narada <auth@example.com>"
+  }
+}

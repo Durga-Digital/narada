@@ -1,0 +1,59 @@
+name: Publish Narada SDK
+on:
+  push:
+    tags: ["sdk-v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact SDK version in packages/sdk/package.json
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: narada-sdk-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: vars.NARADA_SDK_PUBLISH_ENABLED == 'true' && (github.event_name == 'push' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require a revision on main
+        run: git merge-base --is-ancestor HEAD origin/main
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+        with:
+          version: 11.9.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - name: Verify generated contracts, types and SDK/MCP parity
+        run: pnpm contracts:check && pnpm typecheck && pnpm test
+      - name: Build and test the publishable archive
+        id: package
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: pnpm sdk:check
+      - name: Check for an identical existing release
+        id: registry
+        env:
+          SDK_ARCHIVE: ${{ steps.package.outputs.archive }}
+        run: pnpm exec tsx scripts/check-npm-release.ts before
+      - name: Publish the tested archive
+        if: steps.registry.outputs.publish == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          SDK_ARCHIVE: ${{ steps.package.outputs.archive }}
+        run: |
+          test -n "$NODE_AUTH_TOKEN" || { echo 'Configure the NPM_TOKEN repository secret'; exit 1; }
+          npm publish "$SDK_ARCHIVE" --access public --ignore-scripts
+      - name: Verify the public version
+        env:
+          SDK_ARCHIVE: ${{ steps.package.outputs.archive }}
+        run: pnpm exec tsx scripts/check-npm-release.ts after

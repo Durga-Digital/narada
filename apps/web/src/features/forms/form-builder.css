@@ -1,0 +1,211 @@
+/* Keep the lifted block opaque while other blocks slide underneath it. */
+.form-block-motion[data-dragging] .form-question-block {
+  background: white;
+  border-color: #bdcdb7;
+  box-shadow:
+    0 12px 30px -12px #253d2733,
+    0 3px 8px #253d2710;
+}
+.form-document[data-dragging] {
+  cursor: grabbing;
+  user-select: none;
+}
+.form-document[data-dragging] .form-insertion,
+.form-document[data-dragging] .form-block-actions {
+  pointer-events: none;
+}
+
+.form-block-motion {
+  position: relative;
+  min-width: 0;
+}
+
+.form-document {
+  min-width: 0;
+}
+.form-inline {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  field-sizing: content;
+  resize: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 4px 0;
+  line-height: 1.6;
+}
+.form-inline:focus {
+  outline: none;
+  border-bottom-color: #bdcdb7;
+}
+.form-inline::placeholder {
+  color: #929b8e;
+}
+.form-document-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.2;
+}
+.form-question-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.form-question-block {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  min-width: 0;
+  transition: border-color 150ms ease;
+}
+.form-question-block:hover,
+.form-question-active {
+  border-color: #e3e9df;
+}
+.form-block-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+.form-drag-handle {
+  padding: 4px;
+  color: #8b9586;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  border-radius: 4px;
+}
+.form-drag-handle:active {
+  cursor: grabbing;
+}
+.form-drag-handle:hover {
+  background: #edf2e9;
+}
+.form-insertion {
+  min-height: 30px;
+  display: grid;
+  align-items: center;
+  position: relative;
+}
+.form-insertion::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  left: 30px;
+  right: 12px;
+  top: 15px;
+  background: transparent;
+  pointer-events: none;
+}
+.form-insertion:hover::before,
+.form-insertion:focus-within::before {
+  background: #e3e9df;
+}
+.form-insert-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  color: #73806c;
+}
+.form-insert-button:hover,
+.form-insert-button:focus-visible {
+  background: #edf2e9;
+}
+.form-add-line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 15px 12px;
+  font-size: 13px;
+  color: #7d8777;
+  border-radius: 6px;
+}
+.form-add-line:hover {
+  background: #f7f9f4;
+}
+.form-option {
+  border: 1px solid #e3e9df;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 14px;
+}
+.form-block-settings {
+  flex: 1 1 200px;
+}
+.form-block-settings summary {
+  justify-content: flex-end;
+  padding: 5px 0;
+}
+.form-block-settings summary::-webkit-details-marker {
+  display: none;
+}
+.form-block-picker {
+  position: relative;
+  z-index: 1;
+}
+@media (hover: hover) {
+  .form-block-actions,
+  .form-insert-button {
+    opacity: 0;
+  }
+  .form-question-block:hover .form-block-actions,
+  .form-question-block:focus-within .form-block-actions,
+  .form-question-active .form-block-actions,
+  .form-insertion:hover .form-insert-button,
+  .form-insertion:focus-within .form-insert-button {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-question-block {
+    transition: none;
+  }
+}
+
+.form-block-settings[open] {
+  flex-basis: 100%;
+}
+
+.form-drag-scroll-hints {
+  pointer-events: none;
+}
+.form-drag-scroll-edge {
+  position: fixed;
+  inset-inline: 0;
+  height: 50px;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  color: #52664c;
+}
+.form-drag-scroll-top {
+  top: 0;
+  background: linear-gradient(to bottom, #edf2e9ed, #edf2e900);
+}
+.form-drag-scroll-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #edf2e9ed, #edf2e900);
+}
+.form-drag-scroll-edge > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d9e2d3;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 11px;
+  background: #fafbf8;
+}
+.form-drag-scroll-edge[data-active] > span {
+  background: #345d37;
+  border-color: #345d37;
+  color: white;
+}

@@ -1,0 +1,256 @@
+{
+  "name": "@narada/api",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "exports": {
+    "./app": {
+      "development": "./src/app.ts",
+      "types": "./dist/app.d.ts",
+      "default": "./dist/app.js"
+    },
+    "./audience-routes": {
+      "development": "./src/audience-routes.ts",
+      "types": "./dist/audience-routes.d.ts",
+      "default": "./dist/audience-routes.js"
+    },
+    "./bootstrap": {
+      "development": "./src/bootstrap.ts",
+      "types": "./dist/bootstrap.d.ts",
+      "default": "./dist/bootstrap.js"
+    },
+    "./broadcast-routes": {
+      "development": "./src/broadcast-routes.ts",
+      "types": "./dist/broadcast-routes.d.ts",
+      "default": "./dist/broadcast-routes.js"
+    },
+    "./form-routes": {
+      "development": "./src/form-routes.ts",
+      "types": "./dist/form-routes.d.ts",
+      "default": "./dist/form-routes.js"
+    },
+    "./idempotency": {
+      "development": "./src/idempotency.ts",
+      "types": "./dist/idempotency.d.ts",
+      "default": "./dist/idempotency.js"
+    },
+    "./lambda": {
+      "development": "./src/lambda.ts",
+      "types": "./dist/lambda.d.ts",
+      "default": "./dist/lambda.js"
+    },
+    "./local": {
+      "development": "./src/local.ts",
+      "types": "./dist/local.d.ts",
+      "default": "./dist/local.js"
+    },
+    "./mcp-routes": {
+      "development": "./src/mcp-routes.ts",
+      "types": "./dist/mcp-routes.d.ts",
+      "default": "./dist/mcp-routes.js"
+    },
+    "./media-routes": {
+      "development": "./src/media-routes.ts",
+      "types": "./dist/media-routes.d.ts",
+      "default": "./dist/media-routes.js"
+    },
+    "./newsletter-routes": {
+      "development": "./src/newsletter-routes.ts",
+      "types": "./dist/newsletter-routes.d.ts",
+      "default": "./dist/newsletter-routes.js"
+    },
+    "./oauth-pages": {
+      "development": "./src/oauth-pages.ts",
+      "types": "./dist/oauth-pages.d.ts",
+      "default": "./dist/oauth-pages.js"
+    },
+    "./oauth-routes": {
+      "development": "./src/oauth-routes.ts",
+      "types": "./dist/oauth-routes.d.ts",
+      "default": "./dist/oauth-routes.js"
+    },
+    "./preference-routes": {
+      "development": "./src/preference-routes.ts",
+      "types": "./dist/preference-routes.d.ts",
+      "default": "./dist/preference-routes.js"
+    },
+    "./product-routes": {
+      "development": "./src/product-routes.ts",
+      "types": "./dist/product-routes.d.ts",
+      "default": "./dist/product-routes.js"
+    },
+    "./public-dto": {
+      "development": "./src/public-dto.ts",
+      "types": "./dist/public-dto.d.ts",
+      "default": "./dist/public-dto.js"
+    },
+    "./public-pagination": {
+      "development": "./src/public-pagination.ts",
+      "types": "./dist/public-pagination.d.ts",
+      "default": "./dist/public-pagination.js"
+    },
+    "./public-routes": {
+      "development": "./src/public-routes.ts",
+      "types": "./dist/public-routes.d.ts",
+      "default": "./dist/public-routes.js"
+    },
+    "./publication-site-lambda": {
+      "development": "./src/publication-site-lambda.ts",
+      "types": "./dist/publication-site-lambda.d.ts",
+      "default": "./dist/publication-site-lambda.js"
+    },
+    "./publication-site": {
+      "development": "./src/publication-site.ts",
+      "types": "./dist/publication-site.d.ts",
+      "default": "./dist/publication-site.js"
+    },
+    "./template-routes": {
+      "development": "./src/template-routes.ts",
+      "types": "./dist/template-routes.d.ts",
+      "default": "./dist/template-routes.js"
+    },
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./standalone": {
+      "development": "./src/standalone.ts",
+      "types": "./dist/standalone.d.ts",
+      "default": "./dist/standalone.js"
+    },
+    "./server": {
+      "development": "./src/server.ts",
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "tsx --conditions=development watch src/local.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/standalone.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.4",
+    "@narada/core": "workspace:*",
+    "@narada/http-api": "workspace:*",
+    "@narada/mcp": "workspace:*",
+    "@narada/runtime-aws": "workspace:*",
+    "dotenv": "18.0.7",
+    "hono": "4.13.13",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2",
+    "@types/aws-lambda": "8.10.164"
+  },
+  "publishConfig": {
+    "exports": {
+      "./app": {
+        "types": "./dist/app.d.ts",
+        "default": "./dist/app.js"
+      },
+      "./audience-routes": {
+        "types": "./dist/audience-routes.d.ts",
+        "default": "./dist/audience-routes.js"
+      },
+      "./bootstrap": {
+        "types": "./dist/bootstrap.d.ts",
+        "default": "./dist/bootstrap.js"
+      },
+      "./broadcast-routes": {
+        "types": "./dist/broadcast-routes.d.ts",
+        "default": "./dist/broadcast-routes.js"
+      },
+      "./form-routes": {
+        "types": "./dist/form-routes.d.ts",
+        "default": "./dist/form-routes.js"
+      },
+      "./idempotency": {
+        "types": "./dist/idempotency.d.ts",
+        "default": "./dist/idempotency.js"
+      },
+      "./lambda": {
+        "types": "./dist/lambda.d.ts",
+        "default": "./dist/lambda.js"
+      },
+      "./local": {
+        "types": "./dist/local.d.ts",
+        "default": "./dist/local.js"
+      },
+      "./mcp-routes": {
+        "types": "./dist/mcp-routes.d.ts",
+        "default": "./dist/mcp-routes.js"
+      },
+      "./media-routes": {
+        "types": "./dist/media-routes.d.ts",
+        "default": "./dist/media-routes.js"
+      },
+      "./newsletter-routes": {
+        "types": "./dist/newsletter-routes.d.ts",
+        "default": "./dist/newsletter-routes.js"
+      },
+      "./oauth-pages": {
+        "types": "./dist/oauth-pages.d.ts",
+        "default": "./dist/oauth-pages.js"
+      },
+      "./oauth-routes": {
+        "types": "./dist/oauth-routes.d.ts",
+        "default": "./dist/oauth-routes.js"
+      },
+      "./preference-routes": {
+        "types": "./dist/preference-routes.d.ts",
+        "default": "./dist/preference-routes.js"
+      },
+      "./product-routes": {
+        "types": "./dist/product-routes.d.ts",
+        "default": "./dist/product-routes.js"
+      },
+      "./public-dto": {
+        "types": "./dist/public-dto.d.ts",
+        "default": "./dist/public-dto.js"
+      },
+      "./public-pagination": {
+        "types": "./dist/public-pagination.d.ts",
+        "default": "./dist/public-pagination.js"
+      },
+      "./public-routes": {
+        "types": "./dist/public-routes.d.ts",
+        "default": "./dist/public-routes.js"
+      },
+      "./publication-site-lambda": {
+        "types": "./dist/publication-site-lambda.d.ts",
+        "default": "./dist/publication-site-lambda.js"
+      },
+      "./publication-site": {
+        "types": "./dist/publication-site.d.ts",
+        "default": "./dist/publication-site.js"
+      },
+      "./template-routes": {
+        "types": "./dist/template-routes.d.ts",
+        "default": "./dist/template-routes.js"
+      },
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./standalone": {
+        "types": "./dist/standalone.d.ts",
+        "default": "./dist/standalone.js"
+      },
+      "./server": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      }
+    }
+  }
+}

@@ -1,0 +1,195 @@
+.narada-form-choice {
+  position: relative;
+  min-height: 60px;
+  border: 1px solid #d9dfd5;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.narada-form-choice:has(input:checked) {
+  border-color: var(--primary);
+  background-color: #edf2e9;
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.narada-form-choice-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.narada-form-choice:has(input:focus-visible) {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.narada-form-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+}
+
+.narada-form-option-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.narada-form-key,
+.narada-form-checkbox {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  height: 26px;
+  border: 1px solid #cbd3c6;
+  border-radius: 5px;
+  background: #fafbf8;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.narada-form-option-check {
+  flex: 0 0 18px;
+  margin-left: auto;
+  color: var(--primary);
+  opacity: 0;
+  transform: scale(0.75);
+  transition:
+    opacity 160ms ease,
+    transform 180ms ease;
+}
+
+.narada-form-choice:has(input:checked) .narada-form-option-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.narada-form-choice:has(input:checked) .narada-form-key,
+.narada-form-choice:has(input:checked) .narada-form-checkbox {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--color-primary-foreground);
+}
+
+.narada-form-rating-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.narada-form-rating {
+  display: grid;
+  place-items: center;
+  min-height: 84px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.narada-form-rating:has(input:checked) {
+  background: var(--primary);
+  color: var(--color-primary-foreground);
+}
+
+.narada-form-rating .narada-form-option-check {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 13px;
+  height: 13px;
+  color: inherit;
+}
+
+.narada-form-consent {
+  align-items: flex-start;
+  padding: 18px;
+}
+
+.narada-form-checkbox > svg {
+  opacity: 0;
+}
+
+.narada-form-choice:has(input:checked) .narada-form-checkbox > svg {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .narada-form-rating-grid {
+    gap: 8px;
+  }
+  .narada-form-rating {
+    min-height: 64px;
+    font-size: 22px;
+  }
+  .narada-form-option {
+    padding: 14px;
+    gap: 12px;
+  }
+}
+
+@media (pointer: coarse) {
+  .narada-form-keyboard-hint {
+    display: none;
+  }
+}
+
+@media (hover: hover) {
+  .narada-form-choice:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+}
+
+.narada-form-choice:active {
+  transform: scale(0.985);
+}
+
+.narada-form button {
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.narada-form button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+
+.narada-form button > svg {
+  transition: transform 180ms ease;
+}
+
+@media (hover: hover) {
+  .narada-form button:hover:not(:disabled) > .lucide-arrow-right {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .narada-form *,
+  .narada-form *::before,
+  .narada-form *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .narada-form-choice:hover,
+  .narada-form-choice:active,
+  .narada-form button:active:not(:disabled),
+  .narada-form button:hover:not(:disabled) > .lucide-arrow-right {
+    transform: none;
+  }
+}

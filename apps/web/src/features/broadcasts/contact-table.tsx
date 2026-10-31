@@ -1,5 +1,7 @@
 import { ResourceIdentifier } from "../../components/resource-identifier.js";
-import { ChevronLeft, ChevronRight, Users } from "lucide-react";
+import { useId } from "react";
+import { Popover } from "radix-ui";
+import { ChevronLeft, ChevronRight, Users, X } from "lucide-react";
 import { Badge } from "../../components/ui/badge.js";
 import { Button } from "../../components/ui/button.js";
 import { NativeSelect } from "../../components/ui/native-select.js";
@@ -12,6 +14,77 @@ import {
   TableRow,
 } from "../../components/ui/table.js";
 import type { ContactRow } from "./types.js";
+
+function ContactAudiences({ contact }: { contact: ContactRow }) {
+  const titleId = useId();
+  const first = contact.memberships[0];
+
+  if (!first) {
+    return <span className="text-xs text-muted-foreground">No audiences</span>;
+  }
+
+  const remaining = contact.memberships.length - 1;
+  return (
+    <Popover.Root>
+      <Popover.Trigger asChild>
+        <button
+          type="button"
+          aria-label={`View ${contact.memberships.length} ${remaining ? "audiences" : "audience"} for ${contact.email}`}
+          className="flex max-w-64 items-center gap-1.5 rounded-md py-1 text-left outline-none hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Badge variant="outline" className="min-w-0 shrink">
+            <span className="truncate">{first.name}</span>
+          </Badge>
+          {remaining > 0 && (
+            <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs font-medium tabular-nums">
+              +{remaining} more
+            </span>
+          )}
+        </button>
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Content
+          align="start"
+          sideOffset={6}
+          collisionPadding={16}
+          aria-labelledby={titleId}
+          className="z-50 flex max-h-[min(24rem,var(--radix-popover-content-available-height))] w-80 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border bg-popover text-popover-foreground shadow-md outline-none"
+        >
+          <div className="flex items-center justify-between gap-3 border-b px-4 py-3">
+            <h3 id={titleId} className="text-sm font-medium">
+              Audiences ({contact.memberships.length})
+            </h3>
+            <Popover.Close asChild>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-xs"
+                aria-label="Close audiences"
+              >
+                <X />
+              </Button>
+            </Popover.Close>
+          </div>
+          <ul
+            aria-label="Audience memberships"
+            tabIndex={0}
+            className="min-h-0 overflow-y-auto overscroll-contain p-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+          >
+            {contact.memberships.map((membership) => (
+              <li
+                key={membership.audienceId}
+                className="break-words rounded-md px-2 py-2"
+              >
+                {membership.name}
+              </li>
+            ))}
+          </ul>
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
+  );
+}
+
 export function ContactTable({
   contacts,
   page,
@@ -71,13 +144,7 @@ export function ContactTable({
                     </div>
                   </TableCell>
                   <TableCell>
-                    <div className="flex flex-wrap gap-1 max-w-64">
-                      {contact.memberships.map((m) => (
-                        <Badge key={m.audienceId} variant="outline">
-                          {m.name}
-                        </Badge>
-                      ))}
-                    </div>
+                    <ContactAudiences contact={contact} />
                   </TableCell>
                   <TableCell>
                     <Badge
